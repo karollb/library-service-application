@@ -11,16 +11,16 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String firstName;
-    private String surName;
+    private String surname;
     private int peselNumber;
 
     public Customer() {
     }
 
-    public Customer(int id, String firstName, String surName, int peselNumber) {
+    public Customer(int id, String firstName, String surname, int peselNumber) {
         this.id = id;
         this.firstName = firstName;
-        this.surName = surName;
+        this.surname = surname;
         this.peselNumber = peselNumber;
     }
 
@@ -40,12 +40,12 @@ public class Customer {
         this.firstName = firstName;
     }
 
-    public String getSurName() {
-        return surName;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setSurName(String surName) {
-        this.surName = surName;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public int getPeselNumber() {
