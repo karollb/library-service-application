@@ -2,8 +2,8 @@ package pl.edu.wszib.library.model;
 
 import javax.persistence.*;
 
-@Entity(name = "temployee")
-public class Employee {
+@Entity(name = "tuser")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -12,10 +12,10 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public Employee() {
+    public User() {
     }
 
-    public Employee(int id, String login, String pass, Role role) {
+    public User(int id, String login, String pass, Role role) {
         this.id = id;
         this.login = login;
         this.pass = pass;
