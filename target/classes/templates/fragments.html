@@ -7,10 +7,11 @@
 <body>
 <div id="menu" th:fragment="menu">
     <a href="/main" class="menu-button">Strona Główna</a>
+    <a href="/register" class="menu-button" th:if="${role == 'ADMIN'}">Dodaj użytkownika</a>
     <a href="/logout" class="menu-button" th:if="${isLogged}">Wyloguj</a>
 </div>
 
-<img src="/logo.png" id="logo" th:fragment="logo" >
+<img src="/logo.png" id="logo" th:fragment="logo">
 
 
 </body>

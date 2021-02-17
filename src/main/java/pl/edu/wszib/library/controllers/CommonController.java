@@ -27,6 +27,8 @@ public class CommonController {
     public String main(Model model) {
 
         model.addAttribute("isLogged", this.sessionObject.isLogged());
+        model.addAttribute("role", this.sessionObject.isLogged() ? this.sessionObject.getLoggedUser().getRole().toString() : null);
+
 
         if (!this.sessionObject.isLogged()) {
             return "redirect:/login";
