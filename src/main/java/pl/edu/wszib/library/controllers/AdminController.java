@@ -6,7 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import pl.edu.wszib.library.model.Book;
+import pl.edu.wszib.library.model.User;
 import pl.edu.wszib.library.model.view.RegistrationModel;
+import pl.edu.wszib.library.services.IBookService;
 import pl.edu.wszib.library.services.IUserService;
 import pl.edu.wszib.library.session.SessionObject;
 
@@ -20,6 +23,9 @@ public class AdminController {
     @Autowired
     IUserService userService;
 
+    @Autowired
+    IBookService bookService;
+
     @Resource
     SessionObject sessionObject;
 
@@ -29,7 +35,7 @@ public class AdminController {
         model.addAttribute("isLogged", this.sessionObject.isLogged());
         model.addAttribute("role", this.sessionObject.isLogged() ? this.sessionObject.getLoggedUser().getRole().toString() : null);
 
-        if(!this.sessionObject.isLogged()) {
+        if (!this.sessionObject.isLogged()) {
             return "redirect:/login";
         }
         return "register";
@@ -57,4 +63,35 @@ public class AdminController {
             return "redirect:/register";
         }
     }
+
+    @RequestMapping(value = "/addNewBook", method = RequestMethod.GET)
+    public String addNewBookForm(Model model) {
+        if (!this.sessionObject.isLogged() || this.sessionObject.getLoggedUser().getRole() != User.Role.ADMIN) {
+            return "redirect:/login";
+        }
+
+        model.addAttribute("book", new Book());
+        model.addAttribute("isLogged", this.sessionObject.isLogged());
+        model.addAttribute("role", this.sessionObject.isLogged() ? this.sessionObject.getLoggedUser().getRole().toString() : null);
+        model.addAttribute("info", this.sessionObject.getInfo());
+
+        return "addNewBook";
+    }
+
+    @RequestMapping(value = "/addNewBook", method = RequestMethod.POST)
+    public String addNewBook(@ModelAttribute Book book) {
+        if (!this.sessionObject.isLogged() || this.sessionObject.getLoggedUser().getRole() != User.Role.ADMIN) {
+            return "redirect:/login";
+        }
+        if (book.getTitle().isEmpty() || book.getAuthor().isEmpty() || book.getIsbn().isEmpty()) {
+            this.sessionObject.setInfo("Musisz wypełnić wszystkie pola formularza !!!");
+            return "redirect:/addNewProduct";
+        }
+
+        this.bookService.addNewBook(book);
+        return "redirect:/main";
+
+    }
+
+
 }

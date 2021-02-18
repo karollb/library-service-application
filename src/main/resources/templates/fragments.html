@@ -8,6 +8,7 @@
 <div id="menu" th:fragment="menu">
     <a href="/main" class="menu-button">Strona Główna</a>
     <a href="/register" class="menu-button" th:if="${role == 'ADMIN'}">Dodaj użytkownika</a>
+    <a href="/addNewBook" class="menu-button" th:if="${role == 'ADMIN'}">Dodaj książkę</a>
     <a href="/logout" class="menu-button" th:if="${isLogged}">Wyloguj</a>
 </div>
 

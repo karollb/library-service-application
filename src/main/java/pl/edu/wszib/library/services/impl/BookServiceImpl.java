@@ -37,6 +37,7 @@ public class BookServiceImpl  implements IBookService {
 
     @Override
     public void addNewBook(Book book) {
+        book.setStatus(Book.Status.AVAILABLE);
         this.bookDAO.updateBook(book);
     }
 }
