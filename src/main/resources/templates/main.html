@@ -4,10 +4,20 @@
     <meta charset="UTF-8">
     <title>Library</title>
     <link rel="stylesheet" href="/commons.css">
+    <link rel="stylesheet" href="/main.css">
 </head>
 <body>
 <div th:replace="fragments.html :: logo"></div>
 <div th:replace="fragments.html :: menu"></div>
+<div id="content">
+    <th:block th:each="book : ${books}">
+        <div class="book-box">
+            <div th:text="${book.title}" class="title-box"></div>
+            <div th:text="${book.author}" class="author-box"></div>
+            <div th:text="'ISBN: ' + ${book.isbn}" class="isbn-box"></div>
+        </div>
+    </th:block>
+</div>
 
 </body>
 </html>

@@ -1,10 +1,10 @@
-package pl.edu.wszib.library.dao;
+package pl.edu.wszib.library.services;
 
 import pl.edu.wszib.library.model.Customer;
 
 import java.util.List;
 
-public interface ICustomerDAO {
+public interface ICustomerService {
     List<Customer> getAllCustomers();
 
     Customer getCustomerByPeselNumber(String peselNumber);

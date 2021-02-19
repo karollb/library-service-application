@@ -29,7 +29,7 @@ public class CustomerDAOImpl implements ICustomerDAO {
 
 
     @Override
-    public Customer getCustomerByPeselNumber(int peselNumber) {
+    public Customer getCustomerByPeselNumber(String peselNumber) {
         Session session = this.sessionFactory.openSession();
         Query<Customer> query = session.createQuery("FROM pl.edu.wszib.library.model.Customer WHERE peselNumber = :peselNumber");
         query.setParameter("peselNumber", peselNumber);

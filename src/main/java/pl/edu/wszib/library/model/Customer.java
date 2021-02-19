@@ -1,23 +1,23 @@
 package pl.edu.wszib.library.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "tcustomer")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(length = 25)
     private String firstName;
+    @Column(length = 25)
     private String surname;
-    private int peselNumber;
+    @Column(length = 11)
+    private String peselNumber;
 
     public Customer() {
     }
 
-    public Customer(int id, String firstName, String surname, int peselNumber) {
+    public Customer(int id, String firstName, String surname, String peselNumber) {
         this.id = id;
         this.firstName = firstName;
         this.surname = surname;
@@ -48,11 +48,11 @@ public class Customer {
         this.surname = surname;
     }
 
-    public int getPeselNumber() {
+    public String getPeselNumber() {
         return peselNumber;
     }
 
-    public void setPeselNumber(int peselNumber) {
+    public void setPeselNumber(String peselNumber) {
         this.peselNumber = peselNumber;
     }
 }

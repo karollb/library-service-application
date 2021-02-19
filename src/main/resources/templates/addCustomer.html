@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+    <link rel="stylesheet" href="/commons.css">
+    <link rel="stylesheet" href="addNewBook.css">
+</head>
+<body>
+<div th:replace="fragments.html :: logo"></div>
+<div th:replace="fragments.html :: menu"></div>
+<div id="content">
+    <form method="post" id="edit-form">
+        <p th:if="${info}" th:text="${info}" id="error"></p>
+        <input type="text" placeholder="Imię" th:field="*{customer.firstName}">
+        <input type="text" placeholder="Nazwisko" th:field="*{customer.surname}">
+        <input type="text" placeholder="PESEL" th:field="*{customer.peselNumber}">
+        <input type="submit" value="Dodaj">
+    </form>
+</div>
+
+
+</body>
+</html>
