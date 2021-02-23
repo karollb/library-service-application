@@ -31,8 +31,22 @@ public class LoanController {
     @Resource
     SessionObject sessionObject;
 
+    @RequestMapping(value = "/loans", method = RequestMethod.GET)
+    public String loans(Model model) {
+        if(!this.sessionObject.isLogged()) {
+            return "redirect:/login";
+        }
+
+        model.addAttribute("isLogged", this.sessionObject.isLogged());
+        model.addAttribute("customers", this.loanService.getCustomersWithLoans());
+
+        return "loans";
+
+
+    }
+
     @RequestMapping(value = "/customerLoans/{id}", method = RequestMethod.GET)
-    public String loans(@PathVariable int id, Model model) {
+    public String customerLoans(@PathVariable int id, Model model) {
         if (!this.sessionObject.isLogged()) {
             return "redirect:/login";
         }
@@ -79,17 +93,6 @@ public class LoanController {
         return "loanList";
     }
 
-    @RequestMapping(value = "/chooseCustomer", method = RequestMethod.GET)
-    public String chooseCustomer(Model model) {
-        if (!this.sessionObject.isLogged()) {
-            return "redirect:/login";
-        }
-
-        model.addAttribute("customers", this.customerService.getAllCustomers());
-
-        return "chooseCustomer";
-
-    }
 
     @RequestMapping(value = "/addLoan/{id}", method = RequestMethod.GET)
     public String addLoan(@PathVariable int id) {

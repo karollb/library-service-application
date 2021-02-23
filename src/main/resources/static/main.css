@@ -7,3 +7,16 @@
     float: right;
     margin-top: -60px;
 }
+
+#loan-button {
+    width: 200px;
+    margin: 10px auto;
+    display: block;
+    font-size: 26px;
+    border: 2px solid black;
+    color: black;
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+}

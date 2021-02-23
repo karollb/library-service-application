@@ -10,13 +10,14 @@
 <body>
 <div th:replace="fragments.html :: logo"></div>
 <div th:replace="fragments.html :: menu"></div>
+<a href="/loanList" id="loan-button" th:if="${role == 'USER'}">Wypożycz</a>
 <div id="content">
     <th:block th:each="book : ${books}">
         <div class="book-box">
             <div th:text="${book.title}" class="title-box"></div>
             <div th:text="${book.author}" class="author-box"></div>
             <div th:text="'ISBN: ' + ${book.isbn}" class="isbn-box"></div>
-            <a th:href="@{/addToLoanList/{id}(id=${book.id})}" th:if="${book.isEnable()}" class="borrow-button"></a>
+            <a th:href="@{/addToLoanList/{id}(id=${book.id})}" th:if="${book.isEnable()} and ${role=='USER'}" class="borrow-button"></a>
         </div>
     </th:block>
 </div>

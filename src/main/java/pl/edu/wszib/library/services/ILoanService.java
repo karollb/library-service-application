@@ -11,6 +11,8 @@ public interface ILoanService {
 
     List<Loan> getLoansByCustomerId(int id);
 
+    List<Customer> getCustomersWithLoans();
+
     Loan getLoanById(int id);
 
     boolean addNewLoan(Customer customer, List<Book> books);
@@ -18,4 +20,6 @@ public interface ILoanService {
     void addBookByIdToLoanList(int id);
 
     void removeLoan(int id);
+
+
 }

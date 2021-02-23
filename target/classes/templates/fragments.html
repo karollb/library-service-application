@@ -9,8 +9,7 @@
     <a href="/main" class="menu-button">Strona Główna</a>
     <a href="/register" class="menu-button" th:if="${role == 'ADMIN'}">Dodaj Pracownika</a>
     <a href="/addNewBook" class="menu-button" th:if="${role == 'ADMIN'}">Dodaj książkę</a>
-    <a href="/customers" class="menu-button" th:if="${role == 'USER'}">Klienci</a>
-    <a href="/loanList" class="menu-button" th:if="${role == 'USER'}">Lista do wypożyczenia</a>
+    <a href="/loans" class="menu-button" th:if="${role == 'USER'}">Wypożyczenia</a>
     <a href="/logout" class="menu-button" th:if="${isLogged}">Wyloguj</a>
 
 </div>

@@ -10,7 +10,7 @@
 <body>
 <div th:replace="fragments.html :: logo"></div>
 <div th:replace="fragments.html :: menu"></div>
-<a href="/addCustomer" id="add-customer">Dodaj klienta</a>
+<a href="/addCustomer" id="add-customer">Nowy klient</a>
 <div id="content">
     <th:block th:each="customer : ${customers}">
         <div class="customer-box">

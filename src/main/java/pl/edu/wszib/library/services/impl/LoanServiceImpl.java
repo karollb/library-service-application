@@ -3,6 +3,7 @@ package pl.edu.wszib.library.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.edu.wszib.library.dao.IBookDAO;
+import pl.edu.wszib.library.dao.ICustomerDAO;
 import pl.edu.wszib.library.dao.ILoanDAO;
 import pl.edu.wszib.library.model.Book;
 import pl.edu.wszib.library.model.Customer;
@@ -27,6 +28,9 @@ public class LoanServiceImpl implements ILoanService {
     @Autowired
     IBookDAO bookDAO;
 
+    @Autowired
+    ICustomerDAO customerDAO;
+
     @Resource
     SessionObject sessionObject;
 
@@ -45,6 +49,21 @@ public class LoanServiceImpl implements ILoanService {
     public List<Loan> getLoansByCustomerId(int id) {
         return this.loanDAO.getLoansByCustomerId(id);
 
+    }
+
+    @Override
+    public List<Customer> getCustomersWithLoans() {
+        List<Loan> loans = this.loanDAO.getAllLoans();
+
+        List<Customer> customersWithLoans = new ArrayList<>();
+
+        for(Loan loan : loans) {
+            if(!customersWithLoans.contains(loan.getCustomer())) {
+                customersWithLoans.add(loan.getCustomer());
+            }
+        }
+
+        return customersWithLoans;
     }
 
     @Override

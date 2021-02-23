@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.edu.wszib.library.model.Customer;
 import pl.edu.wszib.library.services.ICustomerService;
+import pl.edu.wszib.library.services.ILoanService;
 import pl.edu.wszib.library.session.SessionObject;
 
 import javax.annotation.Resource;
@@ -19,6 +20,9 @@ public class CustomerController {
 
     @Autowired
     ICustomerService customerService;
+
+    @Autowired
+    ILoanService loanService;
 
 
     @Resource
@@ -37,6 +41,18 @@ public class CustomerController {
 
 
         return "customers";
+
+    }
+
+    @RequestMapping(value = "/chooseCustomer", method = RequestMethod.GET)
+    public String chooseCustomer(Model model) {
+        if (!this.sessionObject.isLogged()) {
+            return "redirect:/login";
+        }
+
+        model.addAttribute("customers", this.customerService.getAllCustomers());
+
+        return "chooseCustomer";
 
     }
 

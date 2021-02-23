@@ -13,7 +13,7 @@
 
 }
 .borrow-button {
-    background-image: url("borrow.png");
+    background-image: url("tick.png");
     width: 50px;
     height: 50px;
     display: inline-block;
