@@ -8,8 +8,10 @@ import pl.edu.wszib.library.model.Book;
 import pl.edu.wszib.library.model.Customer;
 import pl.edu.wszib.library.model.Loan;
 import pl.edu.wszib.library.services.ILoanService;
+import pl.edu.wszib.library.session.SessionObject;
 
 
+import javax.annotation.Resource;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -24,6 +26,9 @@ public class LoanServiceImpl implements ILoanService {
 
     @Autowired
     IBookDAO bookDAO;
+
+    @Resource
+    SessionObject sessionObject;
 
     @Override
     public List<Loan> getAllLoans() {
@@ -59,12 +64,28 @@ public class LoanServiceImpl implements ILoanService {
 
             book.setStatus(Book.Status.INACCESSIBLE);
             this.bookDAO.updateBook(book);
+
         }
+
+        this.sessionObject.clearLoanList();
 
         return true;
 
     }
 
+    @Override
+    public void addBookByIdToLoanList(int id) {
+        Book book = this.bookDAO.getBookById(id);
+
+        for (Book bookFromLoanList : this.sessionObject.getLoanList()) {
+            if (bookFromLoanList.getId() == book.getId()) {
+                return;
+
+            }
+        }
+        this.sessionObject.getLoanList().add(book);
+
+    }
 
     @Override
     public void removeLoan(int id) {
@@ -74,4 +95,5 @@ public class LoanServiceImpl implements ILoanService {
         this.bookDAO.updateBook(book);
 
     }
+
 }

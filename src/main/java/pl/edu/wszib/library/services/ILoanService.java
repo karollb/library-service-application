@@ -15,5 +15,7 @@ public interface ILoanService {
 
     boolean addNewLoan(Customer customer, List<Book> books);
 
+    void addBookByIdToLoanList(int id);
+
     void removeLoan(int id);
 }

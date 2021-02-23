@@ -1,7 +1,7 @@
 package pl.edu.wszib.library.model;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+
 import java.util.Date;
 
 @Entity(name = "tloan")

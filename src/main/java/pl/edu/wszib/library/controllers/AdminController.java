@@ -85,7 +85,7 @@ public class AdminController {
         }
         if (book.getTitle().isEmpty() || book.getAuthor().isEmpty() || book.getIsbn().isEmpty()) {
             this.sessionObject.setInfo("Musisz wypełnić wszystkie pola formularza !!!");
-            return "redirect:/addNewProduct";
+            return "redirect:/addNewBook";
         }
 
         this.bookService.addNewBook(book);

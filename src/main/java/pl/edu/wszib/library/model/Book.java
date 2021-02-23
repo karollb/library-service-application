@@ -64,6 +64,14 @@ public class Book {
         this.status = status;
     }
 
+    public boolean isEnable() {
+        if(this.status==Status.AVAILABLE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public enum Status {
         AVAILABLE,
         INACCESSIBLE

@@ -77,7 +77,7 @@ public class CustomerController {
             return "redirect:/addCustomer";
         }
 
-        return "redirect:/customers";
+        return "redirect:/addLoan/"+customer.getId();
 
     }
 }

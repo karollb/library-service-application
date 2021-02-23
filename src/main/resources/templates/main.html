@@ -5,6 +5,7 @@
     <title>Library</title>
     <link rel="stylesheet" href="/commons.css">
     <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/book.css">
 </head>
 <body>
 <div th:replace="fragments.html :: logo"></div>
@@ -15,6 +16,7 @@
             <div th:text="${book.title}" class="title-box"></div>
             <div th:text="${book.author}" class="author-box"></div>
             <div th:text="'ISBN: ' + ${book.isbn}" class="isbn-box"></div>
+            <a th:href="@{/addToLoanList/{id}(id=${book.id})}" th:if="${book.isEnable()}" class="borrow-button"></a>
         </div>
     </th:block>
 </div>

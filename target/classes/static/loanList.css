@@ -1,5 +1,4 @@
-
-#add-customer {
+#choose-customer {
     width: 200px;
     margin: 10px auto;
     display: block;
@@ -10,14 +9,5 @@
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
+}
 
-}
-.return-button {
-    background-image: url("return.png");
-    width: 50px;
-    height: 50px;
-    display: inline-block;
-    background-size: contain;
-    float: right;
-    margin-top: -60px;
-}

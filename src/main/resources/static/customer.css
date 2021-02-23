@@ -1,0 +1,20 @@
+.customer-box {
+    width: 80%;
+    margin: 15px auto;
+    border: 2px solid black;
+}
+
+.firstName-box {
+    font-size: 30px;
+    padding: 10px;
+}
+
+.surname-box {
+    font-size: 26px;
+    padding: 10px;
+}
+
+.pesel-box {
+    font-size: 20px;
+    padding: 10px;
+}
