@@ -25,6 +25,11 @@ public class CustomerServiceImpl implements ICustomerService {
     }
 
     @Override
+    public Customer getCustomerById(int id) {
+        return this.customerDAO.getCustomerById(id);
+    }
+
+    @Override
     public boolean addNewCustomer(Customer customer) {
         if (this.customerDAO.getCustomerByPeselNumber(customer.getPeselNumber()) != null) {
             return false;

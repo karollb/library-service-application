@@ -1,0 +1,43 @@
+.customer-box {
+    width: 80%;
+    margin: 15px auto;
+    border: 2px solid black;
+}
+
+.firstName-box {
+    font-size: 30px;
+    padding: 10px;
+}
+
+.surname-box {
+    font-size: 26px;
+    padding: 10px;
+}
+
+.pesel-box {
+    font-size: 20px;
+    padding: 10px;
+}
+
+#add-customer {
+    width: 200px;
+    margin: 10px auto;
+    display: block;
+    font-size: 26px;
+    border: 2px solid black;
+    color: black;
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+
+}
+.borrow-button {
+    background-image: url("borrow.png");
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    background-size: contain;
+    float: right;
+    margin-top: -60px;
+}

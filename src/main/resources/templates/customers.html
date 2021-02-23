@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+    <link rel="stylesheet" href="/commons.css">
+    <link rel="stylesheet" href="/customers.css">
+</head>
+<body>
+<div th:replace="fragments.html :: logo"></div>
+<div th:replace="fragments.html :: menu"></div>
+<a href="/addCustomer" id="add-customer">Dodaj klienta</a>
+<div id="content">
+    <th:block th:each="customer : ${customers}">
+        <div class="customer-box">
+            <div th:text="'Imię: ' + ${customer.firstName}" class="firstName-box"></div>
+            <div th:text="'Nazwisko: ' + ${customer.surname}" class="surname-box"></div>
+            <div th:text="'PESEL: ' + ${customer.peselNumber}" class="pesel-box"></div>
+            <a th:href="@{/loans/{id}(id=${customer.id})}" class="borrow-button"></a>
+        </div>
+
+    </th:block>
+</div>
+
+</body>
+</html>

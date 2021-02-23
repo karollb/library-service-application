@@ -20,8 +20,25 @@ public class CustomerController {
     @Autowired
     ICustomerService customerService;
 
+
     @Resource
     SessionObject sessionObject;
+
+
+
+    @RequestMapping(value = "/customers", method = RequestMethod.GET)
+    public String customer(Model model) {
+        if (!this.sessionObject.isLogged()) {
+            return "redirect:/login";
+        }
+
+        model.addAttribute("customers", this.customerService.getAllCustomers());
+        model.addAttribute("isLogged", this.sessionObject.isLogged());
+
+
+        return "customers";
+
+    }
 
     @RequestMapping(value = "/addCustomer", method = RequestMethod.GET)
     public String addCustomerForm(Model model) {
@@ -60,7 +77,7 @@ public class CustomerController {
             return "redirect:/addCustomer";
         }
 
-        return "redirect:/main";
+        return "redirect:/customers";
 
     }
 }

@@ -9,5 +9,7 @@ public interface ICustomerDAO {
 
     Customer getCustomerByPeselNumber(String peselNumber);
 
+    Customer getCustomerById(int id);
+
     boolean addNewCustomer(Customer customer);
 }

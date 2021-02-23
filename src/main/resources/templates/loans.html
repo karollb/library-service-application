@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+    <link rel="stylesheet" href="/commons.css">
+    <link rel="stylesheet" href="/loans.css">
+</head>
+<body>
+<div th:replace="fragments.html :: logo"></div>
+<div th:replace="fragments.html :: menu"></div>
+<div id="customer">
+    <div th:text="'Imię: ' + ${customer.firstName}" class="firstName-box"></div>
+    <div th:text="'Nazwisko: ' + ${customer.surname}" class="surname-box"></div>
+    <div th:text="'Pesel: ' + ${customer.peselNumber}" class="pesel-box"></div>
+</div>
+<div id="content">
+    <th:block th:each="customerLoan : ${customerLoans}">
+        <div class="book-box">
+            <div th:text="${customerLoan.getBook().title}" class="title-box"></div>
+            <div th:text="${customerLoan.getBook().author}" class="author-box"></div>
+            <div th:text="'ISBN: ' + ${customerLoan.getBook().isbn}" class="isbn-box"></div>
+            <div th:text="'Data wypożyczenia: ' + ${customerLoan.date}" class="date-box"></div>
+            <a th:href="@{/returnBook/{id}(id=${customerLoan.id})}" class="return-book-button"></a>
+        </div>
+    </th:block>
+</div>
+
+</body>
+</html>

@@ -1,6 +1,7 @@
 package pl.edu.wszib.library.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity(name = "tloan")
@@ -15,16 +16,6 @@ public class Loan {
     @Temporal(value = TemporalType.DATE)
     private Date date;
 
-    public Loan() {
-    }
-
-    public Loan(int id, Customer customer, Book book, Date date) {
-        this.id = id;
-        this.customer = customer;
-        this.book = book;
-        this.date = date;
-
-    }
 
     public int getId() {
         return id;

@@ -45,6 +45,22 @@ public class CustomerDAOImpl implements ICustomerDAO {
     }
 
     @Override
+    public Customer getCustomerById(int id) {
+        Session session = this.sessionFactory.openSession();
+        Query<Customer> query = session.createQuery("FROM pl.edu.wszib.library.model.Customer WHERE id = :id");
+        query.setParameter("id", id);
+
+        Customer result = null;
+        try {
+            result = query.getSingleResult();
+        } catch (Exception e) {
+
+        }
+        session.close();
+        return result;
+    }
+
+    @Override
     public boolean addNewCustomer(Customer customer) {
         Session session = this.sessionFactory.openSession();
         Transaction tx = null;

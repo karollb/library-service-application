@@ -1,5 +1,7 @@
 package pl.edu.wszib.library.dao;
 
+
+import pl.edu.wszib.library.model.Book;
 import pl.edu.wszib.library.model.Loan;
 
 import java.util.List;
@@ -9,7 +11,9 @@ public interface ILoanDAO {
 
     List<Loan> getAllLoans();
 
-    boolean addLoan(Loan loan);
+    List<Loan> getLoansByCustomerId(int id);
 
-    boolean removeLoan(Loan loan);
+    void addLoan(Loan borrow);
+
+    void removeLoan(Loan loan);
 }

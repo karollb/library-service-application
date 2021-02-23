@@ -32,6 +32,7 @@
         <mapping class="pl.edu.wszib.library.model.Book"/>
         <mapping class="pl.edu.wszib.library.model.User"/>
         <mapping class="pl.edu.wszib.library.model.Customer"/>
+        <mapping class="pl.edu.wszib.library.model.Loan"/>
 
 
     </session-factory>
