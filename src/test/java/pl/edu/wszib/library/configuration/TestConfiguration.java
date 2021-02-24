@@ -1,5 +1,6 @@
 package pl.edu.wszib.library.configuration;
 
+import org.mockito.Mockito;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -20,23 +21,23 @@ import pl.edu.wszib.library.dao.impl.UserDAOStub;
 })
 public class TestConfiguration {
 
-    @Bean
+    /*@Bean
     public IBookDAO bookDAO() {
-        return new BookDAOStub();
+        return Mockito.mock(IBookDAO.class);
     }
 
     @Bean
     public IUserDAO userDAO() {
-        return new UserDAOStub();
+        return Mockito.mock(IUserDAO.class);
     }
 
     @Bean
     public ICustomerDAO customerDAO() {
-        return new CustomerDAOStub();
+        return Mockito.mock(ICustomerDAO.class);
     }
 
     @Bean
     public ILoanDAO loanDAO() {
-        return new LoanDAOStub();
-    }
+        return Mockito.mock(ILoanDAO.class);
+    }*/
 }
