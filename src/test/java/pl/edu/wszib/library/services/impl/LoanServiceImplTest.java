@@ -76,8 +76,8 @@ public class LoanServiceImplTest {
         List<Loan> loans = new ArrayList<>();
 
         Customer customer = new Customer(1, "Karol", "Baran", "12345678912");
-        Loan loan = new Loan();
 
+        Loan loan = new Loan();
         loan.setId(1);
         loan.setCustomer(customer);
         loan.setBook(new Book());
