@@ -62,8 +62,9 @@ public class LoanServiceImplTest {
     }
 
     @Test
-    public void getCustomersWithLoansIncorrectTest() {
-        Mockito.when(this.loanDAO.getAllLoans()).thenReturn(emptyLoanList());
+    public void getCustomersWithLoansTest() {
+        List<Loan> loans = new ArrayList<>();
+        Mockito.when(this.loanDAO.getAllLoans()).thenReturn(loans);
 
         List<Customer> result = this.loanService.getCustomersWithLoans();
 
@@ -76,8 +77,6 @@ public class LoanServiceImplTest {
         List<Loan> loans = new ArrayList<>();
 
         Customer customer = new Customer(1, "Karol", "Baran", "12345678912");
-
-
         Loan loan = new Loan();
 
         loan.setId(1);
@@ -89,12 +88,5 @@ public class LoanServiceImplTest {
 
         return loans;
     }
-
-    private List<Loan> emptyLoanList() {
-        List<Loan> loans = new ArrayList<>();
-
-        return loans;
-    }
-
 
 }
