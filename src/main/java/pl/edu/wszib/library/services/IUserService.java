@@ -9,4 +9,6 @@ public interface IUserService {
     void logout();
 
     boolean addNewUser(RegistrationModel registrationModel);
+
+    boolean addNewAdmin(RegistrationModel registrationModel);
 }

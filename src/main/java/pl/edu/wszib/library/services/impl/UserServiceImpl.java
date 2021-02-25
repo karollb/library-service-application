@@ -47,4 +47,15 @@ public class UserServiceImpl implements IUserService {
 
         return this.userDAO.addNewUser(newUser);
     }
+
+    @Override
+    public boolean addNewAdmin(RegistrationModel registrationModel) {
+        if (this.userDAO.getUserByLogin(registrationModel.getLogin()) != null) {
+            return false;
+        }
+
+        User newUser = new User(0, registrationModel.getLogin(), registrationModel.getPass(), User.Role.ADMIN);
+
+        return this.userDAO.addNewUser(newUser);
+    }
 }

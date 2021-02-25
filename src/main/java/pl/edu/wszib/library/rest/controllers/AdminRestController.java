@@ -20,14 +20,15 @@ public class AdminRestController {
     IBookService bookService;
 
 
+
     @RequestMapping(value = "/completeTheDatabase", method = RequestMethod.GET)
     public void completeTheDatabase() {
-        this.userService.addNewUser(new RegistrationModel("admin", "admin", "admin"));
+        this.userService.addNewAdmin(new RegistrationModel("admin", "admin", "admin"));
         this.userService.addNewUser(new RegistrationModel("karol", "karol", "karol"));
 
         this.bookService.addNewBook(newBook("Czysty kod podrecznik dobrego programisty", "Robert C. Martin", "978-83-283-0134-1"));
         this.bookService.addNewBook(newBook("Java. Kompendium programisty", "Herbert Schildt", "978-83-283-5882-9"));
-        this.bookService.addNewBook(newBook("Android. Programowanie aplikacji. Rusz głowa!", "Dawn Griffiths, David Griffiths", "978-83-283-4080-0"));
+        this.bookService.addNewBook(newBook("Android. Programowanie aplikacji. Rusz glowa!", "Dawn Griffiths, David Griffiths", "978-83-283-4080-0"));
         this.bookService.addNewBook(newBook("Jezyk C++. Szkola programowania.", "Stephen Prata", "978-83-246-4336-3"));
         this.bookService.addNewBook(newBook("JavaScript. Interaktywne aplikacje webowe", "Tomasz Sochacki", "978-83-283-5638-2"));
     }

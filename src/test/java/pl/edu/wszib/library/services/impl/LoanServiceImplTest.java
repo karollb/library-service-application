@@ -40,8 +40,7 @@ public class LoanServiceImplTest {
     @Autowired
     ICustomerDAO customerDAO;
 
-    @Resource
-    SessionObject sessionObject;
+
 
     @Test
     public void getCustomersWithLoansCorrectTest() {
