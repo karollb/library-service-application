@@ -11,13 +11,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import pl.edu.wszib.library.configuration.TestConfiguration;
-import pl.edu.wszib.library.dao.IBookDAO;
-import pl.edu.wszib.library.dao.ICustomerDAO;
-import pl.edu.wszib.library.dao.ILoanDAO;
 import pl.edu.wszib.library.dao.IUserDAO;
 import pl.edu.wszib.library.model.User;
 import pl.edu.wszib.library.model.view.RegistrationModel;
 import pl.edu.wszib.library.services.IUserService;
+import pl.edu.wszib.library.session.SessionObject;
+
+import javax.annotation.Resource;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {TestConfiguration.class})
@@ -27,17 +27,13 @@ public class UserServiceImplTest {
     @Autowired
     IUserService userService;
 
-    @MockBean
-    IBookDAO bookDAO;
-
-    @MockBean
+    @Autowired
     IUserDAO userDAO;
 
-    @MockBean
-    ICustomerDAO customerDAO;
 
-    @MockBean
-    ILoanDAO loanDAO;
+    @Resource
+    SessionObject sessionObject;
+
 
     @Test
     public void addNewUserTest() {
@@ -65,4 +61,51 @@ public class UserServiceImplTest {
 
         Assert.assertFalse(result);
     }
+
+    @Test
+    public void correctAuthenticationTest() {
+        User user = new User();
+        user.setLogin("karol");
+        user.setPass("karol");
+        Mockito.when(this.userDAO.getUserByLogin("karol")).thenReturn(generateUser());
+
+        this.userService.authenticate(user);
+
+        Assert.assertNotNull(this.sessionObject.getLoggedUser());
+    }
+
+    @Test
+    public void incorrectLoginAuthenticationTest() {
+        User user = new User();
+        user.setLogin("janusz");
+        user.setPass("janusz");
+        Mockito.when(this.userDAO.getUserByLogin("janusz")).thenReturn(null);
+
+        this.userService.authenticate(user);
+
+        Assert.assertNull(this.sessionObject.getLoggedUser());
+    }
+
+    @Test
+    public void incorrectPassAuthenticationTest() {
+        User user = new User();
+        user.setLogin("karol");
+        user.setPass("karol123");
+        Mockito.when(this.userDAO.getUserByLogin("karol")).thenReturn(generateUser());
+
+        this.userService.authenticate(user);
+
+        Assert.assertNull(this.sessionObject.getLoggedUser());
+    }
+
+    private User generateUser() {
+        User user = new User();
+        user.setId(1);
+        user.setLogin("karol");
+        user.setPass("karol");
+        user.setRole(User.Role.USER);
+
+        return user;
+    }
+
 }

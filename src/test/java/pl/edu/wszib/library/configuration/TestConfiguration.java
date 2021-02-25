@@ -21,7 +21,7 @@ import pl.edu.wszib.library.dao.impl.UserDAOStub;
 })
 public class TestConfiguration {
 
-    /*@Bean
+    @Bean
     public IBookDAO bookDAO() {
         return Mockito.mock(IBookDAO.class);
     }
@@ -39,5 +39,5 @@ public class TestConfiguration {
     @Bean
     public ILoanDAO loanDAO() {
         return Mockito.mock(ILoanDAO.class);
-    }*/
+    }
 }
