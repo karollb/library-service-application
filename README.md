@@ -19,11 +19,10 @@
  Tam może wybrać książke zwracaną przez klienta. Stan książki zostanie automatycznie zmieniony na "Dostępny" i będzie ją można ponownie wypożyczyć.
  
  ## WEB SERVICE:
- http://localhost:8080/completeTheDatabase
+ ### http://localhost:8080/completeTheDatabase
  Powyższy link automatycznie stworzy konto administratora (login: admin, pass: admin), 
  i konto użytkownika (login: karol, pass: karol),
  oraz automatycznie doda do bazy danych 5 książek.
- 
  
  
  
