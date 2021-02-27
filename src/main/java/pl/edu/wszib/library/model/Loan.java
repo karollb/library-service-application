@@ -17,6 +17,7 @@ public class Loan {
     private Date date;
 
 
+
     public int getId() {
         return id;
     }
