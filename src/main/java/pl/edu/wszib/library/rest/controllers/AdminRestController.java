@@ -22,7 +22,7 @@ public class AdminRestController {
 
 
     @RequestMapping(value = "/completeTheDatabase", method = RequestMethod.GET)
-    public String completeTheDatabase() {
+    public void completeTheDatabase() {
         this.userService.addNewAdmin(new RegistrationModel("admin", "admin", "admin"));
         this.userService.addNewUser(new RegistrationModel("karol", "karol", "karol"));
 
@@ -32,7 +32,6 @@ public class AdminRestController {
         this.bookService.addNewBook(newBook("Jezyk C++. Szkola programowania.", "Stephen Prata", "978-83-246-4336-3"));
         this.bookService.addNewBook(newBook("JavaScript. Interaktywne aplikacje webowe", "Tomasz Sochacki", "978-83-283-5638-2"));
 
-        return "redirect:/main";
     }
 
     private Book newBook(String title, String author, String isbn) {
